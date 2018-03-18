@@ -7,9 +7,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: "Calculator",
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      // theme: new ThemeData(
+      //   primarySwatch: Colors.blue,
+      // ),
       home: new Scaffold(
         appBar: new AppBar(
           title: new Text('Calculator'),
@@ -41,43 +41,45 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
       final ThemeData themeData = new ThemeData(
-      primarySwatch: Colors.blue,
-      brightness: Brightness.dark,
-      platform: Theme.of(context).platform,
+        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+        platform: Theme.of(context).platform,
     );
     return new Theme(
       data: themeData,
       child: new Material(
-          child: new Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        new Expanded(
-          flex: 2,
-          child: _displayExpression(),
+        child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            new Expanded(
+              flex: 2,
+              child: _displayExpression(),
+            ),
+            new Expanded(
+              flex: 3,
+              child: _displayTappedValue(),
+            ),
+            new Expanded(
+              flex: 4,
+              child: _numColumn(),
+            ),
+            new Expanded(
+                flex: 1,
+                child: _clearButtons('C'),
+            ),
+            new Expanded(
+                flex: 1,
+                child: _clearButtons('CE'),
+            ),
+          ],
         ),
-        new Expanded(
-          flex: 2,
-          child: _displayTappedValue(),
-        ),
-        new Expanded(
-          flex: 4,
-          child: _numColumn(),
-        ),
-        new Expanded(
-            flex: 1,
-            child: _clearButtons('C'),
-        ),
-        new Expanded(
-            flex: 1,
-            child: _clearButtons('CE'),
-        ),
-      ],
-    ),),);
+      ),
+    );
   }
 
   Widget _displayTappedValue() {
     return new Container(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: const EdgeInsets.only(bottom: 10.0),
       child: new Row(
         children: <Widget>[
           new Text(
@@ -95,6 +97,7 @@ class _CalculatorState extends State<Calculator> {
 
   Widget _displayExpression() {
     return new Container(
+      color: new Color(0x11E1F5FE),
       padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
       child: new Row(
         children: <Widget>[
@@ -134,7 +137,7 @@ class _CalculatorState extends State<Calculator> {
   Widget _numColumn(){
       return new Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children:
       [new Expanded(
           flex: 2,
@@ -178,8 +181,7 @@ class _CalculatorState extends State<Calculator> {
   }
 String operator="";
   Widget _plusOperatorButton() {
-      return new Row(
-      children: <Widget>[new RaisedButton(
+      return new RaisedButton(
             child:  new Text("+"),
           onPressed: () {
             setState(() {
@@ -189,8 +191,6 @@ String operator="";
               displayButtonValue = "";
             });
           },
-        ),
-      ],
       //   padding: const EdgeInsets.only(
       //       //top: 30.0, bottom: 30.0, left: 83.5, right: 83.5),
       // );
@@ -198,8 +198,7 @@ String operator="";
   }
 
   Widget _subOperatorButton() {
-      return new Row(
-      children: <Widget>[new RaisedButton(
+      return new RaisedButton(
             child:  new Text("-"),
           onPressed: () {
             setState(() {
@@ -209,8 +208,6 @@ String operator="";
               displayButtonValue = "";
             });
           },
-        ),
-      ],
       //   padding: const EdgeInsets.only(
       //       //top: 30.0, bottom: 30.0, left: 83.5, right: 83.5),
       // );
@@ -218,8 +215,7 @@ String operator="";
   }
 
   Widget _devideOperatorButton() {
-      return new Row(
-      children: <Widget>[new RaisedButton(
+      return new RaisedButton(
             child:  new Text("/"),
           onPressed: () {
             setState(() {
@@ -229,8 +225,6 @@ String operator="";
               displayButtonValue = "";
             });
           },
-        ),
-      ],
       //   padding: const EdgeInsets.only(
       //       //top: 30.0, bottom: 30.0, left: 83.5, right: 83.5),
       // );
@@ -238,8 +232,7 @@ String operator="";
   }
 
   Widget _multiplyOperatorButton() {
-      return new Row(
-      children: <Widget>[new RaisedButton(
+      return new RaisedButton(
             child:  new Text("*"),
           onPressed: () {
             setState(() {
@@ -249,8 +242,6 @@ String operator="";
               displayButtonValue = "";
             });
           },
-        ),
-      ],
       //   padding: const EdgeInsets.only(
       //       //top: 30.0, bottom: 30.0, left: 83.5, right: 83.5),
       // );
@@ -258,9 +249,7 @@ String operator="";
   }
 int current=0, previous=0;
 Widget _equalButton() {
-    return new Row(
-      children: <Widget>[
-        new RaisedButton(
+    return new RaisedButton(
           child: new Text('='),
           onPressed: () {
               previous = int.parse(displayButtonValue);
@@ -289,8 +278,6 @@ Widget _equalButton() {
               }
             });
           },
-        ),
-      ],
       //   padding: const EdgeInsets.only(
       //       //top: 30.0, bottom: 30.0, left: 83.5, right: 83.5),
       // );
