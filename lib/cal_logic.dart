@@ -14,4 +14,19 @@ class Logic {
   double multiply(int a, int b) {
     return a * b.toDouble();
   }
+
+//   double operation(List<String> list) {
+//     switch (list.removeAt(1)) {
+//       case '+':
+//         return add(list);
+//       case '-':
+//         return substract(list);
+//       case '*':
+//         return multiply(list);
+//       case '/':
+//         return devide(list);
+//       default:
+//         return 0.0;
+//     }
+//   }
 }
